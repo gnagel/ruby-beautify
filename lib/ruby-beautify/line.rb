@@ -20,7 +20,7 @@ module RBeautify
             @formatted = tab_string + stripped
           end
         else
-          @formatted = content
+          @formatted = content.sub(/\n$/, '')
         end
       end
 
