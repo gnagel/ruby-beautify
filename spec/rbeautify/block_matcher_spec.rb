@@ -68,22 +68,22 @@ describe RBeautify::BlockMatcher do
 
   describe '#can_nest?' do
     before(:each) do
-      @language = mock(RBeautify::Language)
+      @language = double(RBeautify::Language)
     end
 
     it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/).should be_can_nest(nil) }
 
-    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/).should be_can_nest(mock('block_start', :parse_content? => true)) }
+    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/).should be_can_nest(double('block_start', :parse_content? => true)) }
 
-    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/).should_not be_can_nest(mock('block_start', :parse_content? => false)) }
+    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/).should_not be_can_nest(double('block_start', :parse_content? => false)) }
 
     it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/, :nest_except => [:bar]).should be_can_nest(nil) }
 
-    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/, :nest_except => [:foo]).should be_can_nest(mock('block_start', :name => :bar, :parse_content? => true)) }
+    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/, :nest_except => [:foo]).should be_can_nest(double('block_start', :name => :bar, :parse_content? => true)) }
 
-    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/, :nest_except => [:foo]).should_not be_can_nest(mock('block_start', :name => :bar, :parse_content? => false)) }
+    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/, :nest_except => [:foo]).should_not be_can_nest(double('block_start', :name => :bar, :parse_content? => false)) }
 
-    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/, :nest_except => [:bar]).should_not be_can_nest(mock('block_start', :name => :bar, :parse_content? => true)) }
+    it { RBeautify::BlockMatcher.new(@language, :foo, /foo/, /bar/, :nest_except => [:bar]).should_not be_can_nest(double('block_start', :name => :bar, :parse_content? => true)) }
   end
 
 end

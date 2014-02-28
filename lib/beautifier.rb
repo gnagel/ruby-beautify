@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 # Ruby beautifier, version 2.1, 09/11/2006
 # Copyright (c) 2006, P. Lutus
 # Released under the GPL
