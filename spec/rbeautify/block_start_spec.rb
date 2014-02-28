@@ -43,7 +43,7 @@ describe RBeautify::BlockStart do
     it { RBeautify::BlockStart.new(@ruby.matcher(:standard), nil, 0, 0, 'def', ' foo') .total_indent_size.should == 2 }
 
     it 'should sum with parents total indent size' do
-      parent = mock('parent_start_block', :total_indent_size => 4)
+      parent = double('parent_start_block', :total_indent_size => 4)
       RBeautify::BlockStart.new(@ruby.matcher(:standard), parent, 0, 0, 'def', ' foo') .total_indent_size.should == 6
     end
   end
